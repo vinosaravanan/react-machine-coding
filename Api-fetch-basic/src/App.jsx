@@ -1,14 +1,14 @@
 import { useState } from 'react'
-// import './App.css'
+import FetchApidata from './Component/FetchApidata'
 
 function App() {
+  
   const [count, setCount] = useState(0)
-
 
   return (
     <>
-      <div>
-          hollo world
+      <div> 
+          <FetchApidata/>
       </div>
     </>
   )
