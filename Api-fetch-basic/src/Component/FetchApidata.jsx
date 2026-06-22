@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 function FetchApidata() {
+
   const [Data, setData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
 
 const handleChange = (e) => {
-  let filterValue =  Data.filter((value, i) => value.title.includes(e.target.value))
-  setData(filterValue)
+  let searchText = e.target.value;
+   console.log(searchText)
+  let filterValue =  Data.filter((value, i) => value.title.toLowerCase().includes(searchText));
+   console.log('xxxxxxx',filterValue)
+  setFilterData(filterValue);
 }
 
   useEffect(() => {
@@ -23,6 +28,7 @@ const handleChange = (e) => {
         const apidata = await response.json();
 
         setData(apidata.slice(0, 10));
+        setFilterData(apidata.slice(0, 10))
       } catch (error) {
         console.log("error", error);
       }
@@ -38,7 +44,7 @@ const handleChange = (e) => {
          <input className="border-2"   type="text" placeholder="search......" onChange={handleChange} />
       </div>
       <ul className="m-5">
-        {Data.map((val, i) => (
+        {filterData.map((val, i) => (
           <li className="mb-5" key={val.id}>
             {val.title}
           </li>
