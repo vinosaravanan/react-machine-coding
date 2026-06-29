@@ -99,7 +99,7 @@ console.log(EditData,'edit');
             <div>
                {toggle === val.id && (
                 <div>
-                  <input onChange={handleEditData} className="border-2" type="text" placeholder="edited text ....."/>
+                  <input onChange={handleEditData} value={val.title} className="border-2" type="text" placeholder="edited text ....."/>
                   <button onClick={() => handleSubmit(val.id)} className="ml-1.5 mb-1.5 border-2">submit</button>
                 </div>
                )}
